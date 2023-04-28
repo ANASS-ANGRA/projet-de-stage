@@ -1,5 +1,6 @@
 
 import Ajouter_client from "./ajouter_client"
+import Contact from "./contact"
 import Table_client from "./table_client"
 
 
@@ -8,8 +9,7 @@ import Table_client from "./table_client"
 function Client(){
     return(
         <div>
-            <Ajouter_client/>
-            <Table_client/>
+         <Contact/>
             
         </div>
     )

@@ -14,11 +14,15 @@ export const fetch_clients = createAsyncThunk("clients", async () => {
     const response = await axios.get(`${Api_base}clients`);
     return response.data;
   });
-
+export const fetch_client = createAsyncThunk("client_contact",async (id)=>{
+   const response = await axios.get(`${Api_base}client_contact/${id}`)
+   return response.data
+})
 
   const initialState = {
     loading: false,
-    clients:[]
+    clients:[],
+    client:[]
   };
   
   export const Clients_slice = createSlice({
@@ -33,7 +37,15 @@ export const fetch_clients = createAsyncThunk("clients", async () => {
             state.loading=false
             state.clients=action.payload
        });
-    }
+       builder.addCase(fetch_client.pending,(state,action)=>{
+        state.loading=true;
+       })
+       builder.addCase(fetch_client.fulfilled ,(state,action)=>{
+            state.loading=false;
+            state.client=action.payload
+       })
+       }
+    
   })
 
   export default Clients_slice.reducer
