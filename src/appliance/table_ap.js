@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetch_appliances } from "../store/slice/appliance_slice"
+import { fetch_appliances, fetch_appliances_detail } from "../store/slice/appliance_slice"
 import axios from "axios"
 import Api_base from "../api"
 
@@ -11,7 +11,6 @@ function Table_ap(){
     useEffect(()=>{dispatch(fetch_appliances())},[])
    
     function dl(id){
-       
         axios.get(`${Api_base}delete_appliance/${id}`).then(()=>{
             dispatch(fetch_appliances())
         })
@@ -33,11 +32,11 @@ function Table_ap(){
                     {
                         data?.map((a)=>(
                          <tr key={a.id}>
-                            <td>{a.libelle}</td>
+                            <td>{a.libelle_appliance}</td>
                             <td>{a.dbid}</td>
                             <td>{a.reference}</td>
                             <td>{a.type.libelle}</td>
-                            <td><button type="button" class="btn btn-light">details</button></td>
+                            <td><button type="button" class="btn btn-light" onClick={()=>{dispatch(fetch_appliances_detail(a.id))}}>details</button></td>
                             <td>
                                 <button type="button" class="btn btn-info">edit</button>
                                 <button type="button" class="btn btn-danger" onClick={() => dl(a.id)}>delet</button>

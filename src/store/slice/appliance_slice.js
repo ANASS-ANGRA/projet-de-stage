@@ -12,10 +12,16 @@ export const fetch_appliances =createAsyncThunk("appliance" , async ()=>{
     return response.data;
 })
 
+export const fetch_appliances_detail=createAsyncThunk("detail_appliance", async(id)=>{
+       const response= await axios.get(`${Api_base}applience/${id}`)
+       return response.data
+})
+
 const initialState = {
   type: [],
   loading: false,
   appliances:[],
+  detail:[]
 };
 
 export const Appliance_slice = createSlice({
@@ -35,7 +41,16 @@ export const Appliance_slice = createSlice({
         state.appliances = action.payload;
         state.loading = false;
       });
+    builder.addCase(fetch_appliances_detail.pending ,(state , action)=>{
+      state.loading=true;
+      
+    });
+    builder.addCase(fetch_appliances_detail.fulfilled,(state,action)=>{
+      state.loading=false;
+      state.detail=action.payload
+    })
     }
 });
+
 
 export default Appliance_slice.reducer;
