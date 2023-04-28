@@ -6,8 +6,8 @@ import { useSelector } from "react-redux"
 
 
 function Contact (){
-    //const client=useSelector(state=>state.clients.client)
-    const [client ,setClient]=useState({
+    const client=useSelector(state=>state.clients.client)
+    /*const [client ,setClient]=useState({
         "id": 1,
         "libelle": "anass",
         "secteur": "public",
@@ -38,7 +38,8 @@ function Contact (){
                 "updated_at": null
             }
         ]
-    })
+    })*/
+    console.log(client)
 
     function dl(){
 
@@ -65,7 +66,7 @@ function Contact (){
                         <td>telephone</td>
                         <td>action</td>
                     </tr>
-                  {client.contact.map((c)=>(
+                  {client.contact?.map((c)=>(
                     <tr>
                         <td>{c.nom}</td>
                         <td>{c.prenom}</td>
