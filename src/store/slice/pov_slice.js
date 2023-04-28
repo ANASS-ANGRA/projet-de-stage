@@ -7,10 +7,15 @@ export const fetch_povs =createAsyncThunk("povs" , async ()=>{
     const response =await axios.get(`${Api_base}povs`)
     return response.data
 })
+export const fetch_pov_detail=createAsyncThunk("pov_detail",async(id)=>{
+    const response = await axios.get(`${Api_base}detail_pov/${id}`)
+    return response.data
+})
 
 const initialState={
     loading:false,
-    povs:[]
+    povs:[],
+    pov:[]
 }
 
 export const povs_slice=createSlice({
@@ -19,12 +24,18 @@ export const povs_slice=createSlice({
         reducers:{},
         extraReducers:(builder)=>{
             builder.addCase(fetch_povs.pending,(state , action)=>{
-                    //  state.loading=true
+                     state.loading=true
             })
             builder.addCase(fetch_povs.fulfilled,(state , action)=>{
-                console.log(action.payload)
                 state.loading=false;
                 state.povs=action.payload
+            })
+            builder.addCase(fetch_pov_detail.pending,(state,action)=>{
+                state.loading=true
+            });
+            builder.addCase(fetch_pov_detail.fulfilled ,(state,action)=>{
+                state.loading=false;
+                state.pov=action.payload
             })
         }   
     })

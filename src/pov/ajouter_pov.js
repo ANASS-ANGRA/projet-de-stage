@@ -23,7 +23,8 @@ function Ajouter_pov(){
        const dispatch=useDispatch()
 
 
-       useEffect(()=>{dispatch(fetch_appliances())
+       useEffect(()=>{
+        dispatch(fetch_appliances())
            dispatch(fetch_clients())
         },[])
 
