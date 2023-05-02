@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetch_appliances, fetch_appliances_detail } from "../store/slice/appliance_slice"
+import { edit, fetch_appliances, fetch_appliances_detail } from "../store/slice/appliance_slice"
 import axios from "axios"
 import Api_base from "../api"
 
@@ -15,7 +15,7 @@ function Table_ap(){
             dispatch(fetch_appliances())
         })
     }
-
+    
     return(
         <div>
 
@@ -38,7 +38,7 @@ function Table_ap(){
                             <td>{a.type.libelle}</td>
                             <td><button type="button" class="btn btn-light" onClick={()=>{dispatch(fetch_appliances_detail(a.id))}}>details</button></td>
                             <td>
-                                <button type="button" class="btn btn-info">edit</button>
+                                <button type="button" class="btn btn-info" onClick={()=>{dispatch(edit(a.id))}}>edit</button>
                                 <button type="button" class="btn btn-danger" onClick={() => dl(a.id)}>delet</button>
                             </td>
                          </tr>

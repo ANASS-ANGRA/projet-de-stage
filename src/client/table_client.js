@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetch_client, fetch_clients } from "../store/slice/client_slice"
+import { edit, fetch_client, fetch_clients } from "../store/slice/client_slice"
 import Api_base from "../api"
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -17,6 +17,8 @@ function Table_client(){
               dispatch(fetch_clients())
          })
      }
+
+     
     
     return(
         <div>
@@ -36,7 +38,7 @@ function Table_client(){
                                 <td>{c.secteur}</td>
                                 <td> 
                                 <button type="button" class="btn btn-light" onClick={()=> dispatch(fetch_client(c.id))}><Link to="/client/info">details</Link></button>
-                                <button type="button" class="btn btn-info">edit</button>
+                                <button type="button" class="btn btn-info" onClick={()=>{dispatch(edit(c.id))}}>edit</button>
                                 <button type="button" class="btn btn-danger" onClick={() => dl(c.id)}>delet</button>
                                 </td>
                             </tr>

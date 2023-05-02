@@ -1,7 +1,7 @@
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Api_base from "../api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetch_clients, new_client } from "../store/slice/client_slice";
 
 
@@ -10,6 +10,13 @@ function Ajouter_client(){
   const [activite ,setactivite]=useState('')
   const [type ,settype]=useState('')
   const dispatch =useDispatch()
+  const edit = useSelector(state=>state.clients.edit)
+  useEffect(()=>{
+     setnom(edit?.libelle)
+     setactivite(edit?.activite)
+     settype(edit?.secteur)
+     console.log(edit)
+  },[edit])
 
     function ajouter(){
          const data={

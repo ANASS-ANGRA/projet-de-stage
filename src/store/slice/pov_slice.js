@@ -15,13 +15,18 @@ export const fetch_pov_detail=createAsyncThunk("pov_detail",async(id)=>{
 const initialState={
     loading:false,
     povs:[],
-    pov:[]
+    pov:[],
+    edit:null 
 }
 
 export const povs_slice=createSlice({
         name:"povs",
         initialState,
-        reducers:{},
+        reducers:{
+            edit:(state,action)=>{
+                state.edit=state.povs.find((p)=>p.id==action.payload)
+            }
+        },
         extraReducers:(builder)=>{
             builder.addCase(fetch_povs.pending,(state , action)=>{
                      state.loading=true
@@ -40,5 +45,5 @@ export const povs_slice=createSlice({
         }   
     })
 
-
+export const {edit}=povs_slice.actions
 export default povs_slice.reducer    

@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { fetch_povs } from "../store/slice/pov_slice"
+import { edit, fetch_povs } from "../store/slice/pov_slice"
 import axios from "axios"
 import Api_base from "../api"
 
@@ -45,7 +45,7 @@ function Table_pov(){
                             <td>{p.ingenier_cybersecurite}</td>
                             <td>{p.compte_manager}</td>
                             <td>
-                            <button type="button" class="btn btn-info">edit</button>
+                            <button type="button" class="btn btn-info" onClick={()=>{dispatch(edit(p.id))}}>edit</button>
                             <button type="button" class="btn btn-danger" onClick={() => dl(p.id)}>delet</button>
                             </td>
                         </tr>

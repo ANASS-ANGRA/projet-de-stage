@@ -22,13 +22,18 @@ export const fetch_client = createAsyncThunk("client_contact",async (id)=>{
   const initialState = {
     loading: false,
     clients:[],
-    client:[]
+    client:[],
+    edit:null
   };
   
   export const Clients_slice = createSlice({
     name: "cliens",
     initialState,
-    reducers: {},
+    reducers: {
+      edit:(state, action)=>{
+        state.edit=state.clients.find((c)=>c.id==action.payload)
+      }
+    },
     extraReducers: (builder) => {
         builder.addCase(fetch_clients.pending, (state, action) => {
             state.loading=true;
@@ -47,5 +52,5 @@ export const fetch_client = createAsyncThunk("client_contact",async (id)=>{
        }
     
   })
-
+  export const {edit} =Clients_slice.actions
   export default Clients_slice.reducer

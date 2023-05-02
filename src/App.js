@@ -7,6 +7,7 @@ import Pov from './pov/pov';
 import { Route, Routes } from 'react-router-dom';
 import Contact from './client/contact';
 import Detail_pov from './pov/detali_pov';
+import Recherch from './appliance/recherch';
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/pov' element={<Pov/>} />
           <Route path='/client/info' element={<Contact/>} />
           <Route path='/pov/detail' element={<Detail_pov/>} />
+          <Route path='/appliance/recherch' element={<Recherch/>} />
         </Routes>
         
     </div>

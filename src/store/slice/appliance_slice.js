@@ -17,17 +17,28 @@ export const fetch_appliances_detail=createAsyncThunk("detail_appliance", async(
        return response.data
 })
 
+export const recherche=createAsyncThunk("recherch",async(d)=>{
+       const response =await axios.get(`${Api_base}recherche_appliance/${d.appliance}/${d.client}`)
+       return response.data
+})
 const initialState = {
   type: [],
   loading: false,
   appliances:[],
-  detail:[]
+  detail:[],
+  rech:{},
+  edit:null
 };
 
 export const Appliance_slice = createSlice({
   name: "appliance",
   initialState,
-  reducers: {},
+  reducers: {
+    edit:(state,action)=>{
+      console.log(action.payload)
+         state.edit = state.appliances.find((e)=> e.id == action.payload)
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetch_type_appliance.pending, (state, action) => {
     });
@@ -48,9 +59,17 @@ export const Appliance_slice = createSlice({
     builder.addCase(fetch_appliances_detail.fulfilled,(state,action)=>{
       state.loading=false;
       state.detail=action.payload
+    });
+    builder.addCase(recherche.pending,(state,action)=>{
+      state.loading=true;
+    });
+    builder.addCase(recherche.fulfilled,(state,action)=>{
+      state.loading=false;
+      state.rech=action.payload[0]
     })
     }
 });
 
 
 export default Appliance_slice.reducer;
+export const { edit } = Appliance_slice.actions
