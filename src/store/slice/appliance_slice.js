@@ -25,7 +25,7 @@ const initialState = {
   type: [],
   loading: false,
   appliances:[],
-  detail:[],
+  detail:null,
   rech:{},
   edit:null
 };
