@@ -24,6 +24,7 @@ export const povs_slice=createSlice({
         initialState,
         reducers:{
             edit:(state,action)=>{
+                console.log("ss")
                 state.edit=state.povs.find((p)=>p.id==action.payload)
             }
         },

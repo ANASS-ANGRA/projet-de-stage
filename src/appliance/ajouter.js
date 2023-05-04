@@ -11,20 +11,8 @@ const [DBID ,setDBID ]=useState("")
 const [reference,setreference]=useState("")
 const [type,settype]=useState("")
 
-
-
-
-
     const dispatch= useDispatch();
     const option = useSelector(state=>state.appliance.type)
-    const edit =useSelector(state=>state.appliance.edit)
-    useEffect(()=>{
-      setlibelle(edit?.libelle_appliance)
-      setDBID(edit?.dbid)
-      setreference(edit?.reference)
-      settype(edit?.type_id)
-      console.log(edit)
-    },[edit])
     useEffect(()=>{
       dispatch(fetch_type_appliance())
     },[])

@@ -10,13 +10,13 @@ function Ajouter_client(){
   const [activite ,setactivite]=useState('')
   const [type ,settype]=useState('')
   const dispatch =useDispatch()
-  const edit = useSelector(state=>state.clients.edit)
+  const edit_e = useSelector(state=>state.clients.edit)
   useEffect(()=>{
-     setnom(edit?.libelle)
-     setactivite(edit?.activite)
-     settype(edit?.secteur)
-     console.log(edit)
-  },[edit])
+     setnom(edit_e?.libelle)
+     setactivite(edit_e?.activite)
+     settype(edit_e?.secteur)
+
+  },[edit_e])
 
     function ajouter(){
          const data={

@@ -19,6 +19,14 @@ function Table_ap(){
      const [DBID_edit ,setDbid_edit]=useState();
      const [reference ,setReference_edit]=useState();
 
+     const edit_e =useSelector(state=>state.appliance.edit)
+     useEffect(()=>{
+       setLibelle_edite(edit_e?.libelle_appliance)
+      setDbid_edit(edit_e?.dbid)
+       setReference_edit(edit_e?.reference)
+       settype(edit_e?.type_id)
+     },[edit_e])
+
  useEffect(()=>{dispatch(fetch_appliances())},[])
   
  
@@ -34,6 +42,7 @@ function Table_ap(){
    const handleShow_edit = (id) => {
     setEditId(id)
     setShowedit(true);
+    dispatch(edit(id))
    }
    
     function dl(id){

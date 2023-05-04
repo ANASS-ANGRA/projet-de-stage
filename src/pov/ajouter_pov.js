@@ -20,20 +20,9 @@ function Ajouter_pov(){
        const [descreption ,setdescreption]=useState("")
        const appliances= useSelector(state=>state.appliance.appliances)
        const clients=useSelector(state=>state.clients.clients)
-       const edit =useSelector(state=>state.povs.edit)
        const dispatch=useDispatch()
 
-       useEffect(()=>{
-        setlibelle(edit?.libelle_pov)
-        setappliance(edit?.appliance_id)
-        setclient(edit?.client_id)
-        setdate_d(edit?.date_debut)
-        setdate_f(edit?.date_fin)
-        setcompte(edit?.compte_manager)
-        setingeneur(edit?.ingenier_cybersecurite)
-        setanalyse(edit?.analyse_cybersecurite)
-        setdescreption(edit?.description)
-        },[edit])
+  
        useEffect(()=>{
         dispatch(fetch_appliances())
            dispatch(fetch_clients())
