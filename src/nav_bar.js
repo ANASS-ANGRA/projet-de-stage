@@ -12,7 +12,7 @@ function Nav_bar(){
                 <Link class="nav-link text-white" to="/clients" >clients</Link>
                 </li>
                <li class="nav-item">
-                    <a class="nav-link text-white" href="/pov">povs</a>
+                    <Link class="nav-link text-white" href="/pov">povs</Link>
                 </li>
           
             </ul>

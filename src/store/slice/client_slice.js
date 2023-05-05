@@ -23,7 +23,8 @@ export const fetch_client = createAsyncThunk("client_contact",async (id)=>{
     loading: false,
     clients:[],
     client:[],
-    edit:null
+    edit:null,
+    contact_edit:null
   };
   
   export const Clients_slice = createSlice({
@@ -32,6 +33,10 @@ export const fetch_client = createAsyncThunk("client_contact",async (id)=>{
     reducers: {
       edit:(state, action)=>{
         state.edit=state.clients.find((c)=>c.id==action.payload)
+      },
+      contact_edit_f:(state ,action)=>{
+        console.log(action.payload)
+        state.contact_edit=state.client?.contact.find((c)=>c.id == action.payload)
       }
     },
     extraReducers: (builder) => {
@@ -52,5 +57,5 @@ export const fetch_client = createAsyncThunk("client_contact",async (id)=>{
        }
     
   })
-  export const {edit} =Clients_slice.actions
+  export const {edit ,contact_edit_f} =Clients_slice.actions
   export default Clients_slice.reducer

@@ -16,7 +16,8 @@ const initialState={
     loading:false,
     povs:[],
     pov:[],
-    edit:null 
+    edit:null ,
+    sceance_edit:null
 }
 
 export const povs_slice=createSlice({
@@ -26,7 +27,12 @@ export const povs_slice=createSlice({
             edit:(state,action)=>{
                 console.log("ss")
                 state.edit=state.povs.find((p)=>p.id==action.payload)
+            },
+            edit_sceance_sl:(state,action) =>{
+                state.sceance_edit=state.pov.science.find((s)=>s.id==action.payload)
             }
+
+
         },
         extraReducers:(builder)=>{
             builder.addCase(fetch_povs.pending,(state , action)=>{
@@ -46,5 +52,5 @@ export const povs_slice=createSlice({
         }   
     })
 
-export const {edit}=povs_slice.actions
+export const {edit ,edit_sceance_sl}=povs_slice.actions
 export default povs_slice.reducer    
