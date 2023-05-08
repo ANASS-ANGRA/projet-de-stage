@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Api_base from "./api";
 import { connection } from "./store/slice/user_slice";
-import { utilisateur } from "./store/slice/user_slice";
 import { utilisateur_c } from "./store/slice/user_slice";
 
 
